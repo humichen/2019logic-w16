@@ -17,6 +17,10 @@
 
 #include "pitches.h"
 int btnpin=2;
+int tonePin=8;
+int latchPin = 11;
+int clockPin = 7;
+int dataPin = 12;
 int btnstate=0;
 int oldbtn=0;
 
@@ -60,14 +64,14 @@ void loop() {
       // to calculate the note duration, take one second divided by the note type.
       //e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
       int noteDuration = 1000 / noteDurations2[thisNote];
-      tone(8, melody2[thisNote], noteDuration);
+      tone(tonePin, melody2[thisNote], noteDuration);
 
       // to distinguish the notes, set a minimum time between them.
       // the note's duration + 30% seems to work well:
       int pauseBetweenNotes = noteDuration * 1.30;
       delay(pauseBetweenNotes);
       // stop the tone playing:
-      noTone(8);
+      noTone(tonePin);
     }
   }
   oldbtn=btnstate;
